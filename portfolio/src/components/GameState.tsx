@@ -1,13 +1,29 @@
-import GamePieces from "./GamePieces"
+import GamePieces from "./GamePieces";
 
 interface GameStateProp {
-    started: boolean
+  started: boolean;
+  allPages: string[];
+  currPages: string[];
+  setPages: (pages: string[]) => string[];
 }
 
-const GameState = ({started} : GameStateProp) => {
-    return (<div>
-        { started && <GamePieces />}
-    </div>)
-}
+const GameState = ({
+  started,
+  allPages,
+  currPages,
+  setPages,
+}: GameStateProp) => {
+  return (
+    <div>
+      {started && (
+        <GamePieces
+          allPages={allPages}
+          currentPages={currPages}
+          setPages={setPages}
+        />
+      )}
+    </div>
+  );
+};
 
 export default GameState;
